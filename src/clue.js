@@ -109,12 +109,20 @@ function selectRandom(array) {
 
 
 function pickMystery() {
-    //returns an object with 3 properties: {suspectsArray: name, roomsArray: name, weaponsArray: name} 
-    return [selectRandom(suspectsArray), selectRandom(roomsArray), selectRandom(weaponsArray)]
+    //returns an object with 3 properties: {suspectsArray, roomsArray, weaponsArray} 
+    let suspect = selectRandom(suspectsArray);
+    let room = selectRandom(roomsArray);
+    let weapon = selectRandom(weaponsArray);
+    return {suspect, room, weapon}
     }
-console.log(pickMystery())
+//if i console.log this funtion does not give the same suspect/room/weapon
 
 // ITERATION 3
 
-function revealMystery(envelope) {}
+function revealMystery(envelope) {
+    let mistery = pickMystery() // better outside the function?
+    let finalMessage = mistery.suspect.firstName + ' ' + mistery.suspect.lastName + ' killed Mr. Boddy using the ' + mistery.weapon.name + ' in the ' + mistery.room.name + '!'
+    return finalMessage
+}
+console.log(revealMystery())
 
